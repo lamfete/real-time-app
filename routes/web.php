@@ -36,7 +36,7 @@ Route::get('/broadcast', function() {
 });
 
 Route::resource('notifications', 'NotificationController');
-
+/*
 class TestEvent implements ShouldBroadcast
 {
     public $text;
@@ -50,4 +50,4 @@ class TestEvent implements ShouldBroadcast
     {
         return ['test-channel'];
     }
-}
+}*/

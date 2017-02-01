@@ -65,7 +65,7 @@ function notifySubmit() {
   // Build POST data and make AJAX request
   var data = {notify_text: notifyText};
   $.post('/notifications', data).success(notifySuccess);
-  
+  showNotification(data);
   // Ensure the normal browser event doesn't take place
   return false;
 }
@@ -76,6 +76,24 @@ function notifySuccess() {
 }
 
 $(notifyInit);
+
+// Use toastr to show the notification
+function showNotification(data) {
+    // TODO: get the text from the event data
+    // TODO: Subscribe to the channel
+    var pusher = new Pusher("{{env("PUSHER_KEY")}}");
+
+    // TODO: Bind to the event and pass in the notification handler
+    var channel = pusher.subscribe('notifications-channel');
+    channel.bind('new-notification', function(data) {
+      // alert(data.text);
+      // TODO: use the text in the notification
+      toastr.success(data.text, null, {"positionClass": "toast-bottom-left"});
+  });
+
+}
+
+// var pusher = new Pusher('{{env("PUSHER_KEY")}}');
 </script>
 
 </body>

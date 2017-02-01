@@ -97,12 +97,12 @@
             Pusher.log = function(msg) {
                 console.log(msg);
             };
-            
+            /*
             var pusher = new Pusher("{{env("PUSHER_KEY")}}")
-            var channel = pusher.subscribe('test-channel');
-            channel.bind('test-event', function(data) {
+            var channel = pusher.subscribe('notifications-channel');
+            channel.bind('new-notification', function(data) {
               alert(data.text);
-            });
+          }); */
         </script>
     </body>
 </html>
